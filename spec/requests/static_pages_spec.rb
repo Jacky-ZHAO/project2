@@ -25,4 +25,14 @@ describe "Static pages" do
     it { should have_content('Blog') }
     it { should have_title(full_title('Blog')) }
   end
+  
+  it "should have the right links on the layout" do
+    visit root_path
+    click_link "About"
+    expect(page).to have_title(full_title('About Us'))
+    click_link "FAQ"
+    expect(page).to have_title(full_title('FAQ'))
+    click_link "Blog"
+    expect(page).to have_title(full_title('Blog'))
+  end
 end
